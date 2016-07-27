@@ -5,7 +5,7 @@ We wanted to provide a very straightforward Java API starter kit. We also implem
 1. Entities in the domain's layer (or business logic's layer) are **abstract**. The persistence data are held in the implementation.
   1. The drawback is that the entity needs to use an abstract getter instead of using the private field directly.
   1. The huge advantage is that we don't pollute our domain with persistence-specific info, such as *auto-incremented ids*. Hence, there is no way we bind ourselves to the database or any persistence of any kind. The domain is clearly expressed as it should be.
-2. Contract's classes, such as Repositories and Factories, have a base test class. 
+2. Contract's classes, such as Repositories and Factories, have a base test class. ([example here](./src/test/java/ca/nexapp/starterkit/domain/users/UserRepositoryTest.java))
  2. It helps us to test the API of the classes, without any workaround.
  2. We don't duplicate any tests.
  2. We reduce the number of tests to write, so it speeds up the process when you add a new implementation.
