@@ -21,7 +21,7 @@ public abstract class UserRepositoryTest {
 
     @Test
     public void canAddAUser() throws UserAlreadyExistException, UserNotFoundException {
-        User user = createUser(AN_EMAIL);
+        User user = withEmail(AN_EMAIL);
 
         userRepository.add(user);
 
@@ -31,7 +31,7 @@ public abstract class UserRepositoryTest {
 
     @Test(expected = UserAlreadyExistException.class)
     public void cannotAddTheSameUserTwice() throws UserAlreadyExistException {
-        User user = createUser(AN_EMAIL);
+        User user = withEmail(AN_EMAIL);
         userRepository.add(user);
 
         userRepository.add(user);
@@ -39,7 +39,7 @@ public abstract class UserRepositoryTest {
 
     @Test(expected = UserNotFoundException.class)
     public void canRemoveAUser() throws UserAlreadyExistException, UserNotFoundException {
-        User user = createUser(AN_EMAIL);
+        User user = withEmail(AN_EMAIL);
         userRepository.add(user);
 
         userRepository.remove(user);
@@ -49,14 +49,14 @@ public abstract class UserRepositoryTest {
 
     @Test(expected = UserNotFoundException.class)
     public void cannotRemoveANonExistingUser() throws UserNotFoundException {
-        User user = createUser(AN_EMAIL);
+        User user = withEmail(AN_EMAIL);
 
         userRepository.remove(user);
     }
 
     @Test
     public void givenAMulticasedEmail_CanFindTheUserWithItsEmail() throws UserAlreadyExistException, UserNotFoundException {
-        User user = createUser("john.doe@email.com");
+        User user = withEmail("john.doe@email.com");
         userRepository.add(user);
 
         User userFound = userRepository.findByEmail("jOHn.doE@emAIl.cOm");
@@ -69,7 +69,7 @@ public abstract class UserRepositoryTest {
         userRepository.clear();
     }
 
-    private User createUser(String email) {
+    private User withEmail(String email) {
         return userFactory.create(email, "john.doe");
     }
 
