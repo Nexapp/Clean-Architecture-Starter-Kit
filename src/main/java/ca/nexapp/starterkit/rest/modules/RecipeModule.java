@@ -14,7 +14,7 @@ import ca.nexapp.starterkit.domain.ingredients.UnitLessIngredient;
 import ca.nexapp.starterkit.domain.recipes.Recipe;
 import ca.nexapp.starterkit.domain.recipes.RecipeRepository;
 import ca.nexapp.starterkit.infrastructure.persistence.recipes.RecipeInMemoryRepository;
-import ca.nexapp.starterkit.rest.presenters.ingredients.IngredientPresenter;
+import ca.nexapp.starterkit.rest.presenters.ingredients.IngredientPresenterFactory;
 import ca.nexapp.starterkit.rest.presenters.recipes.RecipePresenter;
 
 public class RecipeModule extends AbstractModule {
@@ -26,7 +26,7 @@ public class RecipeModule extends AbstractModule {
 
     @Provides
     public RecipePresenter providesRecipePresenter() {
-        return new RecipePresenter(new IngredientPresenter());
+        return new RecipePresenter(new IngredientPresenterFactory());
     }
 
     @Provides

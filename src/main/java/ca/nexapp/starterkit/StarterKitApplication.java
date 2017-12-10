@@ -1,5 +1,7 @@
 package ca.nexapp.starterkit;
 
+import com.codahale.metrics.health.HealthCheck;
+
 import ca.nexapp.starterkit.rest.modules.RecipeModule;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
@@ -30,6 +32,14 @@ public class StarterKitApplication extends Application<StarterKitConfiguration> 
     @Override
     public void run(StarterKitConfiguration configuration, Environment environment) {
         // Auto-discovery is enable
+
+        environment.healthChecks().register("health", new HealthCheck() {
+
+            @Override
+            protected Result check() throws Exception {
+                return Result.healthy();
+            }
+        });
     }
 
 }

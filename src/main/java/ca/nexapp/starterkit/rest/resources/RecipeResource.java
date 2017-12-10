@@ -3,6 +3,7 @@ package ca.nexapp.starterkit.rest.resources;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -12,6 +13,7 @@ import ca.nexapp.starterkit.application.recipes.RecipeFinderUseCase;
 import ca.nexapp.starterkit.domain.recipes.Recipe;
 import ca.nexapp.starterkit.domain.recipes.RecipeRepository;
 import ca.nexapp.starterkit.domain.recipes.pickers.HealthiestRecipePicker;
+import ca.nexapp.starterkit.rest.parameters.UnitDisplayParameter;
 import ca.nexapp.starterkit.rest.presenters.recipes.RecipePresenter;
 import ca.nexapp.starterkit.rest.presenters.recipes.RecipeResponse;
 
@@ -29,16 +31,16 @@ public class RecipeResource {
     }
 
     @GET
-    public RecipeResponse[] findAllRecipes() {
+    public RecipeResponse[] findAllRecipes(@BeanParam UnitDisplayParameter unit) {
         Set<Recipe> recipes = recipeRepository.findAll();
-        return recipePresenter.present(recipes);
+        return recipePresenter.present(recipes, unit.value());
     }
 
     @GET
     @Path("healthiest")
-    public RecipeResponse findHealthiestRecipe() {
+    public RecipeResponse findHealthiestRecipe(@BeanParam UnitDisplayParameter unit) {
         RecipeFinderUseCase recipeFinderUseCase = new RecipeFinderUseCase(recipeRepository);
         Recipe recipe = recipeFinderUseCase.find(new HealthiestRecipePicker());
-        return recipePresenter.present(recipe);
+        return recipePresenter.present(recipe, unit.value());
     }
 }
