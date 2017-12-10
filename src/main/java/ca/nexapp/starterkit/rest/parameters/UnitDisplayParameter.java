@@ -11,7 +11,10 @@ public class UnitDisplayParameter {
     @QueryParam("unit")
     public Optional<String> raw;
 
-    public UnitDisplayParameter(Optional<String> raw) {
+    public UnitDisplayParameter() {
+    }
+
+    protected UnitDisplayParameter(Optional<String> raw) {
         this.raw = Optional.ofNullable(raw).orElse(Optional.empty());
     }
 
