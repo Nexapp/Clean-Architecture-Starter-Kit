@@ -1,5 +1,7 @@
 package ca.nexapp.starterkit.application.recipes;
 
+import java.util.Set;
+
 import ca.nexapp.starterkit.domain.recipes.Recipe;
 import ca.nexapp.starterkit.domain.recipes.RecipePicker;
 import ca.nexapp.starterkit.domain.recipes.RecipeRepository;
@@ -13,8 +15,7 @@ public class RecipeFinderUseCase {
     }
 
     public Recipe find(RecipePicker recipePicker) {
-        throw new RecipeNotFoundException();
-        // Set<Recipe> recipes = recipeRepository.findAll();
-        // return recipePicker.pick(recipes).orElseThrow(RecipeNotFoundException::new);
+        Set<Recipe> recipes = recipeRepository.findAll();
+        return recipePicker.pick(recipes).orElseThrow(RecipeNotFoundException::new);
     }
 }
