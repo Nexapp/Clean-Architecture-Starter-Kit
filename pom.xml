@@ -11,6 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<dropwizard.version>1.2.2</dropwizard.version>
 	</properties>
 
 	<organization>
@@ -92,6 +93,11 @@
 			<id>nexapp-math-mvn-repo</id>
 			<url>https://raw.github.com/nexapp/nexappmath/mvn-repo/</url>
 		</repository>
+
+		<repository>
+			<id>nexapp-core-mvn-repo</id>
+			<url>https://raw.github.com/nexapp/nexappcore/mvn-repo/</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -119,7 +125,7 @@
 		<dependency>
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-core</artifactId>
-			<version>1.2.2</version>
+			<version>${dropwizard.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.glassfish.hk2.external</groupId>
@@ -128,10 +134,16 @@
 				<exclusion>
 					<groupId>org.glassfish.hk2.external</groupId>
 					<artifactId>aopalliance-repackaged</artifactId>
-				</exclusion>				
+				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-auth</artifactId>
+			<version>${dropwizard.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>ru.vyarus</groupId>
 			<artifactId>dropwizard-guicey</artifactId>
@@ -148,6 +160,12 @@
 			<groupId>ca.nexapp</groupId>
 			<artifactId>math</artifactId>
 			<version>0.0.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ca.nexapp</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.9</version>
 		</dependency>
 	</dependencies>
 </project>
