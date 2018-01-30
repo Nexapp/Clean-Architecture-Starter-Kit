@@ -13,7 +13,7 @@ public class RecipeNotFoundMapper implements ExceptionMapper<RecipeNotFoundExcep
     @Override
     public Response toResponse(RecipeNotFoundException exception) {
         ErrorException error = new ErrorException("NO_RECIPE_FOUND");
-        return Response.status(Status.BAD_REQUEST).entity(error).build();
+        return Response.status(Status.NOT_FOUND).entity(error).build();
     }
 
 }

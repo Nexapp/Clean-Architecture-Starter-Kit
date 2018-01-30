@@ -18,6 +18,8 @@ import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class StarterKitApplication extends Application<StarterKitConfiguration> {
@@ -42,6 +44,13 @@ public class StarterKitApplication extends Application<StarterKitConfiguration> 
                         new AdminModule())
                 .build();
         bootstrap.addBundle(guice);
+        bootstrap.addBundle(new SwaggerBundle<StarterKitConfiguration>() {
+
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(StarterKitConfiguration configuration) {
+                return configuration.swaggerBundleConfiguration;
+            }
+        });
     }
 
     @Override

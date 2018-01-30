@@ -5,10 +5,12 @@ import java.util.Optional;
 import javax.ws.rs.QueryParam;
 
 import ca.nexapp.starterkit.rest.presenters.ingredients.UnitDisplay;
+import io.swagger.annotations.ApiParam;
 
 public class UnitDisplayParameter {
 
     @QueryParam("unit")
+    @ApiParam(allowableValues = "metric, imperial", defaultValue = "metric", required = false, value = "The unit to display results")
     public Optional<String> raw;
 
     public UnitDisplayParameter() {

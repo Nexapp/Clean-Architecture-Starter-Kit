@@ -1,2 +1,4 @@
 template: Hello, %s!
 defaultName: Stranger
+swagger:
+    resourcePackage: ca.nexapp.starterkit.rest.resources
