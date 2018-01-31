@@ -9,8 +9,10 @@ We wanted to provide a very straightforward Java API starter kit. We also implem
     - We reduce the number of tests to write, so it speeds up the process when you add a new implementation.
 
 ## How to run the app
-Run `mvn package; java -jar target/clean-architecture-0.0.1.jar serer config.yml` v
-## How to run testsRun `mvn test` 
+Run `mvn package; java -jar target/clean-architecture-0.0.1.jar serer config.yml` 
+
+## How to run tests
+Run `mvn test` 
 
 ## Contact
 Feel free to share or contribute to this project. You can contact us directly at contact@nexapp.ca
