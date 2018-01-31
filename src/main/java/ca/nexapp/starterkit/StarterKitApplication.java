@@ -4,6 +4,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 import com.codahale.metrics.health.HealthCheck;
 
+import ca.nexapp.starterkit.configurations.StarterKitConfiguration;
 import ca.nexapp.starterkit.domain.admin.Admin;
 import ca.nexapp.starterkit.domain.admin.AdminRepository;
 import ca.nexapp.starterkit.rest.authentication.authenticators.AdminAuthenticator;
